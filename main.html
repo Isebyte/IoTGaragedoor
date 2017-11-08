@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Garage Door Fancytimes</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="script.js" ></script>
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
+	</head>
+	
+	<body>
+	<!--BEGIN LOGGED OUT VIEW-->
+		<div id="loggedOut">
+			<div class="tab">
+			  <button class="tablinks" onclick="openPage(event, 'Login')" id="defaultOpen">Login</button>
+			  <button class="tablinks" onclick="openPage(event, 'Register')">Register</button>
+			  <button class="tablinks" onclick="openPage(event, 'Recover')">Recover Info</button>
+			</div>
+		<!--BEGIN LOGIN TAB-->
+			<div class="tabcontent" id="Login">
+			
+				<div class="ex">
+				
+				<h2>Login</h2>
+			
+				  Username:<br>
+				  <input type="text" name="user" id="userGuess"><br><br>
+				  Password:<br>
+				  <input type="password" name="pass" id="passGuess">
+				  <br><br>
+				  
+				  <input type="submit" value="Submit" class="button" id="loginButt">
+				  </div>
+			</div>
+			
+		<!--END LOGIN TAB-->
+		
+		<!--BEGIN REGISTRATION TAB-->
+			<div id="Register" class="tabcontent">
+				<div class = "ex">
+					  <h4>Please fill out the form below.</h4>
+							
+							<br>
+							Username:<br>
+							<input type="text" name="user" id="user"><br><br>
+							Password:<br>
+							<input type="password" name="pass" id="pass1"><br>
+							<input type="password" name="pass2" id="pass2" placeholder="Enter password again"><br>
+							<br>
+							E-mail:<br>
+							<input type="email" name="email" id="email"><br>
+							<br>
+							Phone Number:<br>
+							<input type="tel" name="telephone" id="phone"><br>
+							<br>
+							Garage Door ID:<br>
+							<input type="number" name="doorID" id="doorID"><br>
+							
+							<br>
+							<input type="submit" value="Create Account" class="button" id="registerButt">
+						
+					
+					</div>
+				</div>
+		<!--END REGISTRATION TAB-->
+		
+		<!--BEGIN RECOVERY TAB-->
+			<div id="Recover" class="tabcontent">
+				<div class = "ex">
+				<h4>Please enter your username OR e-mail.</h4>  
+					A recovery e-mail with instructions on how to resert your password will be sent.
+					<br>
+						<br>
+						Username:<br>
+						<input type="text" name="userRecovery" id="recoverName"><br><br>
+						E-mail:<br>
+						<input type="email" name="email" id="recoverEmail">
+						<br><br>
+						<input type="submit" value="Recover Password" class="button" id="recoverButt">
+					
+					
+					</div>
+				</div>
+		<!--END RECOVERY TAB-->
+		</div>
+	<!--END LOGGED OUT VIEW-->
+	
+	<!--BEGIN LOGGED IN VIEW-->
+	<div id="loggedIn">
+			<div class="tab">
+			  <button class="tablinks" onclick="openPage(event, 'Status')" id="defaultOpen2">Status</button>
+			  <button class="tablinks" onclick="openPage(event, 'Advanced')">Advanced</button>
+			  <button class="tablinks" onclick="logout()">Logout</button>
+			</div>
+	
+		<!--BEGIN STATUS TAB-->
+		
+			<div id="Status" class="tabcontent">
+				<div class = "ex">
+					  <h3>View and control the status of your doors</h3>  
+					
+					<!--BEGIN Table o' doors.  2 doors per row-->
+						<div class="door" id="door1">
+							<p>Door1<p>
+							<p id="door1Status"></p>
+							<button id = "door1Butt" class = "doorControlClose"> </button>
+						</div>
+					<!--END Table o' doors-->
+					<div class ="med">
+						<b>Auto-close</b><br><br>
+						<form method="get">
+						  <input type="checkbox" name="door" value="autoClose" id="autoClose">Automatically close door after:  <br>
+						  <div class="right"><input type="number" min="2" max="100" name="autoCloseTime" style="width: 30px;" id="autoCloseTime"> Seconds</div>
+						</form>
+                        <button class="button" id="saveAdvancedButt"> Save </button>
+					</div>
+                    
+					</div>
+				</div>
+		<!--END STATUS TAB-->
+		<!--BEGIN ADVANCED TAB-->
+			<div id="Advanced" class="tabcontent">
+				<div class = "ex">
+					<h3>Advanced Features</h3>
+					<p id = "doorStatus"></p>
+					<!--<div class ="med">
+						<b>Auto-close</b><br><br>
+						<form method="get">
+						  <input type="checkbox" name="door" value="autoClose" id="autoClose">Automatically close door after:  <br>
+						  <div class="right"><input type="number" min="2" max="100" name="autoCloseTime" style="width: 30px;" id="autoCloseTime"> Seconds</div>
+						</form>
+					</div>-->
+					
+					<div class ="med">
+						<b>Text Notifications</b><br><br>
+						I'd like to get text notifications when...<br>
+						  <input type="checkbox" name="door" value="open" id="opens"> A door opens<br>
+						  <input type="checkbox" name="door" value="close" id="closes"> A door closes<br>
+						  <input type="checkbox" name="door" value="timeout" id="timeOut"> A door has been left open for:  <br>
+						  <div class="right"><input type="number" name="doortime" style="width: 30px;" id = "timeOutTime"> Minutes</div>
+						
+					</div>
+					
+					<div class ="med">
+						<b>Auto-open</b><br><br>
+						  <input type="checkbox" name="door" value="open" id="autoOpen"> Automatically open garage door when my car approaches<br>
+					
+					</div>
+<!--					<button class="button" id="saveAdvancedButt"> Save </button>-->
+					<div class ="med">
+						<b>Garage Status</b><br><br>
+						<b>Current Temperature</b>:  75*C<br>
+						<b>Cars Present</b>: 1 car<br>
+					</div>
+				</div>
+			</div>
+			<!--END ADVANCED TAB-->
+			<!--BEGIN LOGOUT-->
+			<div id="Logout" class="tabcontent">
+			</div>
+			<!--END LOGOUT-->
+		</div>
+		<!--END LOGGED IN VIEW-->
+	</body>
+</html>
